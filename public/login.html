@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GestIT - Iniciar sesión</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="login-body">
+
+  <main class="login-container">
+    <section class="login-card">
+      <div class="brand login-brand">
+        <div class="brand-icon">IT</div>
+        <div>
+          <h1>GestIT</h1>
+          <p>Gestión de activos de IT</p>
+        </div>
+      </div>
+
+      <div class="login-heading">
+        <h2>Bienvenido</h2>
+        <p>Ingresá tus credenciales para continuar.</p>
+      </div>
+
+      <form id="loginForm">
+        <label for="usuario">Usuario</label>
+        <input
+          id="usuario"
+          data-testid="input-usuario"
+          name="usuario"
+          type="text"
+          placeholder="Ingresá tu usuario"
+          autocomplete="username"
+          required
+        >
+
+        <label for="password">Contraseña</label>
+        <input
+          id="password"
+          data-testid="input-password"
+          name="password"
+          type="password"
+          placeholder="Ingresá tu contraseña"
+          autocomplete="current-password"
+          required
+        >
+
+        <div id="loginError" data-testid="error-login" class="alert error hidden"></div>
+
+        <button class="btn primary full" type="submit" data-testid="btn-login">
+          Iniciar sesión
+        </button>
+      </form>
+
+      <div class="mock-users">
+        <strong>Usuarios de prueba</strong>
+        <p>Administrador: <code>admin</code> / <code>admin123</code></p>
+        <p>Operador: <code>operador</code> / <code>operador123</code></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/login.js"></script>
+</body>
+</html>

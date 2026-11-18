@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GestIT - Ficha del equipo</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="brand">
+        <div class="brand-icon">IT</div>
+        <div>
+          <h1>GestIT</h1>
+          <span>Gestión de activos</span>
+        </div>
+      </div>
+      <nav id="mainNav" class="main-nav"></nav>
+    </div>
+
+    <div class="topbar-user">
+      <div class="user-info">
+        <strong id="userName">Usuario</strong>
+        <span id="userRole">Rol</span>
+      </div>
+      <button id="logoutBtn" class="btn outline" data-testid="btn-cerrar-sesion">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <a href="/dashboard" class="back-link" data-testid="btn-volver">← Volver al listado</a>
+    <div id="globalAlert" class="alert hidden" style="margin-top:14px"></div>
+    <div id="fichaContenido" style="margin-top:14px"></div>
+  </main>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/acciones.js"></script>
+  <script src="/js/equipo.js"></script>
+</body>
+</html>

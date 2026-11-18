@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GestIT - Configuración</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="brand">
+        <div class="brand-icon">IT</div>
+        <div>
+          <h1>GestIT</h1>
+          <span>Gestión de activos</span>
+        </div>
+      </div>
+      <nav id="mainNav" class="main-nav"></nav>
+    </div>
+
+    <div class="topbar-user">
+      <div class="user-info">
+        <strong id="userName">Usuario</strong>
+        <span id="userRole">Rol</span>
+      </div>
+      <button id="logoutBtn" class="btn outline" data-testid="btn-cerrar-sesion">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="page-heading">
+      <div>
+        <h2>Configuración</h2>
+        <p>Activá o desactivá los módulos que tu organización necesita.</p>
+      </div>
+    </div>
+    <div id="globalAlert" class="alert hidden"></div>
+
+    <article class="card modulo-card" data-testid="modulo-nucleo">
+      <div>
+        <h3>Núcleo (equipos, estados, usuarios)</h3>
+        <p class="muted">Inventario, ciclo de vida de los equipos y acceso por roles. El núcleo no puede desactivarse.</p>
+      </div>
+      <span class="status-badge available">Siempre activo</span>
+    </article>
+
+    <article class="card modulo-card" data-testid="modulo-personas">
+      <div>
+        <h3>Personas y entregas</h3>
+        <p class="muted">Padrón de empleados, entregas y devoluciones con actas numeradas e historial de tenencias.</p>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="toggle-personas" data-testid="toggle-modulo-personas">
+        <span class="slider"></span>
+      </label>
+    </article>
+
+    <article class="card modulo-card" data-testid="modulo-identificacion">
+      <div>
+        <h3>Identificación física (QR y etiquetas)</h3>
+        <p class="muted">Código QR por equipo para abrir su ficha desde el celular y exportación CSV para etiquetas.</p>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="toggle-identificacion" data-testid="toggle-modulo-identificacion">
+        <span class="slider"></span>
+      </label>
+    </article>
+  </main>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/configuracion.js"></script>
+</body>
+</html>

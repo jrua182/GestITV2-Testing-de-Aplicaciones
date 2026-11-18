@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GestIT - Empleados</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <div class="brand">
+        <div class="brand-icon">IT</div>
+        <div>
+          <h1>GestIT</h1>
+          <span>Gestión de activos</span>
+        </div>
+      </div>
+      <nav id="mainNav" class="main-nav"></nav>
+    </div>
+
+    <div class="topbar-user">
+      <div class="user-info">
+        <strong id="userName">Usuario</strong>
+        <span id="userRole">Rol</span>
+      </div>
+      <button id="logoutBtn" class="btn outline" data-testid="btn-cerrar-sesion">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="page-heading">
+      <div>
+        <h2>Empleados</h2>
+        <p>Padrón de personas habilitadas para recibir equipos.</p>
+      </div>
+      <button id="newEmpleadoBtn" class="btn primary" data-testid="btn-nuevo-empleado">+ Nuevo empleado</button>
+    </div>
+
+    <div id="globalAlert" class="alert hidden"></div>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <h3>Listado de empleados</h3>
+          <span id="empCount" data-testid="contador-empleados">0 empleados</span>
+        </div>
+      </div>
+      <div class="filters" style="grid-template-columns:1fr">
+        <div class="filter-group">
+          <label for="buscarEmpleado">Buscar</label>
+          <input id="buscarEmpleado" type="search" data-testid="input-buscar-empleado" placeholder="Apellido, nombre o documento...">
+        </div>
+      </div>
+      <div class="table-wrapper">
+        <table data-testid="tabla-empleados">
+          <thead>
+            <tr>
+              <th>Apellido y nombre</th>
+              <th>Documento</th>
+              <th>Sector</th>
+              <th>Email</th>
+              <th>Estado</th>
+              <th>Equipos asignados</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="empleadosBody"></tbody>
+        </table>
+      </div>
+      <div id="emptyEmp" class="empty-state hidden" data-testid="mensaje-sin-empleados">
+        <h3>No se encontraron empleados.</h3>
+      </div>
+    </section>
+  </main>
+
+  <div id="empModalOverlay" class="modal-overlay hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <h3>Nuevo empleado</h3>
+          <p>Completá los datos de la persona.</p>
+        </div>
+        <button type="button" id="closeEmpModal" class="modal-close" aria-label="Cerrar">×</button>
+      </div>
+      <form id="empleadoForm" novalidate>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="nombre">Nombre *</label>
+            <input id="nombre" name="nombre" type="text" maxlength="50" data-testid="input-nombre">
+            <div class="field-error" data-error-for="nombre" data-testid="error-nombre"></div>
+          </div>
+          <div class="form-field">
+            <label for="apellido">Apellido *</label>
+            <input id="apellido" name="apellido" type="text" maxlength="50" data-testid="input-apellido">
+            <div class="field-error" data-error-for="apellido" data-testid="error-apellido"></div>
+          </div>
+          <div class="form-field">
+            <label for="documento">Documento *</label>
+            <input id="documento" name="documento" type="text" inputmode="numeric" data-testid="input-documento">
+            <div class="field-error" data-error-for="documento" data-testid="error-documento"></div>
+          </div>
+          <div class="form-field">
+            <label for="sector">Sector *</label>
+            <select id="sector" name="sector" data-testid="select-sector">
+              <option value="">Seleccionar...</option>
+              <option value="Sistemas">Sistemas</option>
+              <option value="Administración">Administración</option>
+              <option value="Ventas">Ventas</option>
+              <option value="Recursos Humanos">Recursos Humanos</option>
+              <option value="Operaciones">Operaciones</option>
+              <option value="Gerencia">Gerencia</option>
+            </select>
+            <div class="field-error" data-error-for="sector" data-testid="error-sector"></div>
+          </div>
+        </div>
+        <div class="form-field" style="margin-top:14px">
+          <label for="email">Email *</label>
+          <input id="email" name="email" type="text" maxlength="100" data-testid="input-email">
+          <div class="field-error" data-error-for="email" data-testid="error-email"></div>
+        </div>
+        <div id="empFormError" class="alert error hidden" data-testid="error-empleado-form"></div>
+        <div class="modal-actions">
+          <button type="button" id="cancelEmpModal" class="btn secondary" data-testid="btn-cancelar-empleado">Cancelar</button>
+          <button type="submit" class="btn primary" data-testid="btn-crear-empleado">Crear empleado</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="verEquiposOverlay" class="modal-overlay hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <h3>Equipos asignados</h3>
+          <p id="verEquiposSubtitle"></p>
+        </div>
+        <button type="button" id="closeVerEquipos" class="modal-close" aria-label="Cerrar">×</button>
+      </div>
+      <div id="verEquiposBody" data-testid="lista-equipos-empleado"></div>
+    </div>
+  </div>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/empleados.js"></script>
+</body>
+</html>
